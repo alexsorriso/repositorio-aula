@@ -10,7 +10,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreens} />
-        <Tab.Screen name="Settings" component={CalculoScreens} />
+        <Tab.Screen name="Calculadora" component={CalculoScreens} />
         <Tab.Screen name="IMC" component={CalculoIMCScreen} />
       </Tab.Navigator>
     </NavigationContainer>

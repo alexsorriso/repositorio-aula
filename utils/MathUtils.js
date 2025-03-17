@@ -32,7 +32,7 @@ class MathUtils {
         if (isNaN(sum)) {
             Alert.alert('Erro', 'Por favor, insira números válidos.');
         } else {
-            alert(`A soma é: ${sum.toFixed(2)}`);
+            alert(`O IMC é: ${sum.toFixed(2)}`);
         }
 
     }
