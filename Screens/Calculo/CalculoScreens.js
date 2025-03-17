@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text } from 'react-native';
-import TextInputBox from '../../components/TextInputBox/TextInputBox';
-import CustomButton from '../../components/CustomButtom/CustomButtom';
-import { Picker } from '@react-native-picker/picker';
+import React, { useState } from 'react'; import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import CustomButton from '../../Componentes/CustomButton/CustomButton';
+import TextInputBox from '../../Componentes/TextInputBox/TextInputBox';
+import Logo from '../../Componentes/Logo/Logo';
+import { Picker } from 'react-native-web';
 import MathUtils from '../../utils/MathUtils';
-function CalculoScreens() {
-    const [number1, setNumber1] = useState('');
-    const [number2, setNumber2] = useState('');
-    const [selectedValue, setSelectedValue] = useState('Somar');
-    return (
-        <View style={styles.container}>
-            <StatusBar style="auto" />
-            <Text style={styles.title}>Soma de Dois Números</Text>
-            <TextInputBox
-                value={number1}
-                onChangeText={setNumber1}
-                placeholder="Digite o primeiro número"
-                keyboardType="numeric"
-            />
-            <Picker
+
+
+export default function CalculoScreen() {
+  const [number1, setNumber1] = useState('');
+  const [number2, setNumber2] = useState('');
+  const [saida, setSaida] = useState('');
+  const [selectedValue, setSelectedValue] = useState('Somar')
+  return (
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <ScrollView contentContainerStyle={styles.container}>
+
+        <Logo/>
+
+        <Text style={styles.title}>Operações</Text>
+        <Picker
                 selectedValue={selectedValue}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) =>
@@ -30,35 +31,29 @@ function CalculoScreens() {
                 <Picker.Item label="Multiplicar" value="*" />
                 <Picker.Item label="Dividir" value="/" />
             </Picker>
-            <TextInputBox
-                value={number2}
-                onChangeText={setNumber2}
-                placeholder="Digite o segundo número"
-                keyboardType="numeric"
-            />
-            <CustomButton
-                title="Calcular"
-                onPress={() =>
-                    MathUtils.funcaoCalculo(number1, number2, selectedValue)}
-                style={styles.button}
-            />
-        </View>
-    );
+        <TextInputBox value={number1}
+          onChangeText={setNumber1} placeholder="Digite o primeiro número" keyboardType="numeric"
+        />
+        <TextInputBox value={number2}
+          onChangeText={setNumber2} placeholder="Digite o segundo número" keyboardType="numeric"
+        />
+        <CustomButton title="Calcular"
+          onPress={() => MathUtils.funcaoCalculo(number1, number2,selectedValue, setSaida )} style={styles.button}
+        />
+        <Text>{saida ? saida : ''}</Text>
+      </ScrollView>
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    picker: {
-        height: 50,
-        width: 200,
-    }
-});
-export default CalculoScreens;
+  container: {
+    flex: 1,
+    backgroundColor: '#fff', alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+  }
+}); 

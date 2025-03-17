@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 class MathUtils {
-    static funcaoCalculo(number1, number2, acao) {
+    static funcaoCalculo(number1, number2, acao, setSaida) {
         var sum;
         switch (acao) {
             case '+':
@@ -15,6 +15,7 @@ class MathUtils {
             case '/':
                 sum = parseFloat(number1) / parseFloat(number2);
                 break;
+
             default:
                 break;
         }
@@ -23,6 +24,17 @@ class MathUtils {
         } else {
             alert(`A soma é: ${sum}`);
         }
+    }
+
+    static funcaoCalculoIMC(number1, number2) {
+        var sum = (number2/number1**2) * 10000
+
+        if (isNaN(sum)) {
+            Alert.alert('Erro', 'Por favor, insira números válidos.');
+        } else {
+            alert(`A soma é: ${sum.toFixed(2)}`);
+        }
+
     }
 }
 export default MathUtils;

@@ -1,64 +1,18 @@
-import React, { useState } from 'react'; import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import CustomButton from './Componentes/CustomButton/CustomButton'; 
-import TextInputBox from './Componentes/TextInputBox/TextInputBox'; 
-import FuncaoSoma from './ações/FuncaoSoma';
-import FuncaoSubtracao from './ações/FuncaoSubtracao';
-import funcaoMultiplicacao from './ações/FuncaoMultiplicacao';
-import FuncaoDivisiao from './ações/FuncaoDivisao';
-import Logo from './Componentes/Logo/Logo';
-import { Picker } from 'react-native-web';
-import MathUtils from './utils/MathUtils';
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import CalculoScreens from "./Screens/Calculo/CalculoScreens";
+import HomeScreens from "./Screens/home/HomeScreens";
+import CalculoIMCScreen from "./Screens/Calculo/CalculoIMCScreen";
 
-
-
+const Tab = createBottomTabNavigator();
 export default function App() {
-  const [number1, setNumber1] = useState('');
-  const [number2, setNumber2] = useState('');
-  const [saida, setSaida] = useState('');
-  const [selectedValue, setSelectedValue] = useState('Somar')
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <ScrollView contentContainerStyle={styles.container}>
-
-        <Logo/>
-
-        <Text style={styles.title}>Operações</Text>
-        <Picker
-                selectedValue={selectedValue}
-                style={styles.picker}
-                onValueChange={(itemValue, itemIndex) =>
-                    setSelectedValue(itemValue)}
-            >
-                <Picker.Item label="Somar" value="+" />
-                <Picker.Item label="Subtrair" value="-" />
-                <Picker.Item label="Multiplicar" value="*" />
-                <Picker.Item label="Dividir" value="/" />
-            </Picker>
-        <TextInputBox value={number1}
-          onChangeText={setNumber1} placeholder="Digite o primeiro número" keyboardType="numeric"
-        />
-        <TextInputBox value={number2}
-          onChangeText={setNumber2} placeholder="Digite o segundo número" keyboardType="numeric"
-        />
-        <CustomButton title="Somar"
-          onPress={() => MathUtils.funcaoCalculo(number1, number2,selectedValue, setSaida )} style={styles.button}
-        />
-        <Text>{saida ? saida : ''}</Text>
-      </ScrollView>
-    </View>
-  );
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreens} />
+        <Tab.Screen name="Settings" component={CalculoScreens} />
+        <Tab.Screen name="IMC" component={CalculoIMCScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff', alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  }
-}); 
