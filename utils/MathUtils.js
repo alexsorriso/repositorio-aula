@@ -26,12 +26,13 @@ class MathUtils {
         }
     }
 
-    static funcaoCalculoIMC(number1, number2) {
+    static funcaoCalculoIMC(number1, number2, setSaida) {
         var sum = (number2/number1**2) * 10000
 
         if (isNaN(sum)) {
             Alert.alert('Erro', 'Por favor, insira números válidos.');
         } else {
+            setSaida(`O IMC é: ${sum.toFixed(2)}`);
             alert(`O IMC é: ${sum.toFixed(2)}`);
         }
 

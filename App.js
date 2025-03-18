@@ -3,16 +3,19 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CalculoScreens from "./Screens/Calculo/CalculoScreens";
 import HomeScreens from "./Screens/home/HomeScreens";
 import CalculoIMCScreen from "./Screens/Calculo/CalculoIMCScreen";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreens} />
-        <Tab.Screen name="Calculadora" component={CalculoScreens} />
-        <Tab.Screen name="IMC" component={CalculoIMCScreen} />
-      </Tab.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={HomeScreens} />
+        <Drawer.Screen name="Calculadora" component={CalculoScreens} />
+        <Drawer.Screen name="IMC" component={CalculoIMCScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   )
 }
