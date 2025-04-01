@@ -37,5 +37,13 @@ class MathUtils {
         }
 
     }
+
+    static funcaoCadastro(tarefa, data, setSaida){
+        let vtarefa=[];
+        let vdata=[];
+        vtarefa.push(tarefa);
+        vdata.push(data);
+
+    }
 }
 export default MathUtils;
