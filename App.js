@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CronometroMenuScreen from "./Screens/Cronometro/CronometroMenuScreen";
 import HomeScreens from "./Screens/home/HomeScreens";
 import TarefasMenuScreen from "./Screens/Tarefas/TarefasMenuScreen";
+import AlunoScreen from "./Screens/AlunoScreen/AlunoScreen";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
@@ -15,6 +16,8 @@ export default function App() {
         <Drawer.Screen name="Home" component={HomeScreens} />
         <Drawer.Screen name="Cronometro" component={CronometroMenuScreen} />
         <Drawer.Screen name="Tarefas" component={TarefasMenuScreen} />
+        <Drawer.Screen name="Alunos" component={AlunoScreen} />
+        
       </Drawer.Navigator>
     </NavigationContainer>
   )
